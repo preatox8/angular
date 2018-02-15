@@ -1,5 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Collegue } from '../shared/domain/collegue';
+import { Output } from '@angular/core/src/metadata/directives';
+import { EventEmitter, Key } from 'selenium-webdriver';
+
+import { CollegueService } from '../shared/service/collegue.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-un-collegue-component',
@@ -10,12 +15,20 @@ export class UnCollegueComponentComponent implements OnInit {
 
   @Input() collegue:Collegue;
 
-  constructor() { }
+
+  constructor(private collegueService:CollegueService) { }
+
+  ngOnInit(){
+
+  }
+
 
   jaime(){
-      // événement clic sur le bouton "J'aime"
-      // => le score du collègue est augmenté de 10
-      this.collegue.score += 10;
+   /* this.collegueService.aimerUnCollegue(this.collegue).then(tabCollegues => {
+      
+    });*/
+    this.collegue.score += 10;
+
   }
 
   jedeteste(){
@@ -24,7 +37,6 @@ export class UnCollegueComponentComponent implements OnInit {
       this.collegue.score -= 5;
   }
 
-  ngOnInit() {
-  }
+  
 
 }

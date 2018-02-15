@@ -6,6 +6,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { UnCollegueComponentComponent } from './un-collegue-component/un-collegue-component.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { CollegueService } from './shared/service/collegue.service';
+
 
 @NgModule({
   declarations: [
@@ -14,9 +17,10 @@ import { UnCollegueComponentComponent } from './un-collegue-component/un-collegu
   ],
   imports: [
     BrowserModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [CollegueService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

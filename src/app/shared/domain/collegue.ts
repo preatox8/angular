@@ -1,12 +1,12 @@
 export class Collegue {
 
-    nom:string;
-    urlImage:string;
+    pseudo:string;
+    imageUrl:string;
     score:number;
 
-    constructor(nom,urlImage,score){
-        this.nom = nom;
-        this.urlImage = urlImage;
+    constructor(pseudo,imageUrl,score){
+        this.pseudo = pseudo;
+        this.imageUrl = imageUrl;
         this.score = score;
     }
 }
