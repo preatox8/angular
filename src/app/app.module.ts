@@ -8,17 +8,36 @@ import { UnCollegueComponentComponent } from './un-collegue-component/un-collegu
 
 import { HttpClientModule } from '@angular/common/http';
 import { CollegueService } from './shared/service/collegue.service';
+import { RouterModule, Routes } from '@angular/router';
+import { TableauCollegueComponent } from './tableau-collegue/tableau-collegue.component';
+import { CarrouselCollegueComponent } from './carrousel-collegue/carrousel-collegue.component';
+import { DetailCollegueComponent } from './detail-collegue/detail-collegue.component';
+import { ClassiqueCollegueComponent } from './classique-collegue/classique-collegue.component';
+
+const appRoutes: Routes = [
+  { path: 'classique', component: ClassiqueCollegueComponent },
+  { path: 'tableau', component: TableauCollegueComponent },
+  { path: 'carrousel', component: CarrouselCollegueComponent },
+  { path: 'detail/:pseudo', component: DetailCollegueComponent },
+  { path: '**', redirectTo: 'classique' }
+];
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    UnCollegueComponentComponent
+    UnCollegueComponentComponent,
+    TableauCollegueComponent,
+    CarrouselCollegueComponent,
+    DetailCollegueComponent,
+    ClassiqueCollegueComponent
   ],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [CollegueService],
   bootstrap: [AppComponent]

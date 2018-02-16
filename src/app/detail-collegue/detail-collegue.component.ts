@@ -1,31 +1,29 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Collegue } from '../shared/domain/collegue';
-
 import { CollegueService } from '../shared/service/collegue.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
+
 @Component({
-  selector: 'app-un-collegue-component',
-  templateUrl: './un-collegue-component.component.html',
-  styleUrls: ['./un-collegue-component.component.css']
+  selector: 'app-detail-collegue',
+  templateUrl: './detail-collegue.component.html',
+  styleUrls: ['./detail-collegue.component.css']
 })
-export class UnCollegueComponentComponent implements OnInit {
+export class DetailCollegueComponent implements OnInit {
 
-  @Input() collegue: Collegue;
-  @Input() hauteurImage: number;
-  @Output() colleguesort: Collegue;
-
+  collegue: Collegue;
+  pseudo: string;
 
 
-  constructor(private collegueService: CollegueService) {
-
+  constructor(private collegueService: CollegueService, private route: ActivatedRoute) {
+    route.params.subscribe(params => { this.pseudo = params['pseudo']; });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.collegueService.afficherUnCollegue(this.pseudo).then(c => this.collegue = c)
   }
-
 
   jaime() {
     this.collegueService.aimerUnCollegue(this.collegue).then(tabCollegues => {
@@ -37,11 +35,6 @@ export class UnCollegueComponentComponent implements OnInit {
     this.collegueService.detesterUnCollegue(this.collegue).then(tabCollegues => {
       this.collegue.score = tabCollegues.score;
     });
-  }
-
-  tailler(img: HTMLImageElement) {
-    console.log("tailler", img);
-    this.hauteurImage = img.width;
   }
 
 

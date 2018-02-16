@@ -1,29 +1,28 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Collegue } from '../shared/domain/collegue';
-
+import { Output } from '@angular/core/src/metadata/directives';
+import { EventEmitter, Key } from 'selenium-webdriver';
 import { CollegueService } from '../shared/service/collegue.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
+
 
 @Component({
-  selector: 'app-un-collegue-component',
-  templateUrl: './un-collegue-component.component.html',
-  styleUrls: ['./un-collegue-component.component.css']
+  selector: 'app-tableau-collegue',
+  templateUrl: './tableau-collegue.component.html',
+  styleUrls: ['./tableau-collegue.component.css']
 })
-export class UnCollegueComponentComponent implements OnInit {
+export class TableauCollegueComponent implements OnInit {
 
+  collegues: Collegue[];
   @Input() collegue: Collegue;
-  @Input() hauteurImage: number;
-  @Output() colleguesort: Collegue;
 
-
-
-  constructor(private collegueService: CollegueService) {
-
-  }
+  constructor(private collegueService: CollegueService) { }
 
   ngOnInit() {
+    this.collegueService.listerCollegues().then(tabCollegues => {
+      this.collegues = tabCollegues
+    });
   }
 
 
@@ -38,11 +37,5 @@ export class UnCollegueComponentComponent implements OnInit {
       this.collegue.score = tabCollegues.score;
     });
   }
-
-  tailler(img: HTMLImageElement) {
-    console.log("tailler", img);
-    this.hauteurImage = img.width;
-  }
-
 
 }
