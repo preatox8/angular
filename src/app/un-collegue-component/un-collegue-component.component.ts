@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-un-collegue-component',
   templateUrl: './un-collegue-component.component.html',
-  styleUrls: ['./un-collegue-component.component.css']
+  styleUrls: ['./un-collegue-component.component.css'],
 })
 export class UnCollegueComponentComponent implements OnInit {
 

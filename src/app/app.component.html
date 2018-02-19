@@ -1,36 +1,48 @@
 <div class="container">
-    <div class="row">
-      <div class="col">
-        <h1>Top Collègues</h1>
-      </div>
+  <div class="row">
+    <div class="col">
+      <h1>Top Collègues</h1>
     </div>
-    <div class="row">
-      <div class="col">Les meilleurs collègues du moment</div>
-    </div>
-    <br>
-    <form>
-      <div class="form-group">
-        <label>Pseudo</label>
-        <input type="text" class="form-control" placeholder="Pseudo" #pseudo>
-      </div>
-      <div class="form-group">
-        <label>URL image</label>
-        <input type="text" class="form-control" placeholder="URL Image" #imageUrl>
-      </div>
-      <button (click)="add(pseudo, imageUrl)" href="#collapseExample" class="btn btn-primary">Ajouter un nouveau collègue</button>
-    </form>
-    <br>
-    <div *ngIf="afficheralert == true">
-      <div class="alert alert-success" role="alert" id="alertmessage">
-        Le collègue {{pseudo.value}} a été ajouté avec succès
-      </div>
-    </div>
-    <br>
-    <nav class="nav">
-      <a routerLink="/classique" class="nav-link" routerLinkActive="active">Classique</a>
-      <a routerLink="/tableau" class="nav-link" routerLinkActive="active">Tableau</a>
-      <a routerLink="/carrousel" class="nav-link" routerLinkActive="active">Carrousel</a>
-    </nav>
-    <br>
-    <router-outlet></router-outlet>
   </div>
+  <div class="row">
+    <div class="col">Les meilleurs collègues du moment</div>
+  </div>
+  <br>
+  <form>
+    <div class="form-group">
+      <label>Pseudo</label>
+      <input type="text" class="form-control" placeholder="Pseudo" #pseudo>
+    </div>
+    <div class="form-group">
+      <label>URL image</label>
+      <input type="text" class="form-control" placeholder="URL Image" #imageUrl>
+    </div>
+    <button (click)="add(pseudo, imageUrl)" href="#collapseExample" class="btn btn-primary">Ajouter un nouveau collègue</button>
+  </form>
+  <br>
+  <div *ngIf="afficheralert == true">
+    <div class="alert alert-success" role="alert" id="alertmessage">
+      Le collègue {{pseudo.value}} a été ajouté avec succès
+    </div>
+  </div>
+  <br>
+  <nav class="nav">
+    <a routerLink="/classique" class="nav-link" routerLinkActive="active">Classique</a>
+    <a routerLink="/tableau" class="nav-link" routerLinkActive="active">Tableau</a>
+    <a routerLink="/carrousel" class="nav-link" routerLinkActive="active">Carrousel</a>
+  </nav>
+  <br>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="pipe_filter_number">Limiter</span>
+    </div>
+    <input type="text" placeholder="Limiter le nombre maximum de collègues" class="form-control" id="valeur_filtrage_number" aria-describedby="basic-addon3" #filtrenombre>
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="pipe_filter_pseudo">Filtrer par pseudo</span>
+    </div>
+    <input type="search" placeholder="Filtrer par pseudo" class="form-control" ng-model="filtre" id="valeur_filtrage_pseudo" aria-describedby="basic-addon3" #filtrepseudo>
+  </div>
+  <router-outlet></router-outlet>
+</div>

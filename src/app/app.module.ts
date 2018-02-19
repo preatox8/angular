@@ -13,6 +13,7 @@ import { TableauCollegueComponent } from './tableau-collegue/tableau-collegue.co
 import { CarrouselCollegueComponent } from './carrousel-collegue/carrousel-collegue.component';
 import { DetailCollegueComponent } from './detail-collegue/detail-collegue.component';
 import { ClassiqueCollegueComponent } from './classique-collegue/classique-collegue.component';
+import { ScorePipe } from './shared/pipe/score.pipe';
 
 const appRoutes: Routes = [
   { path: 'classique', component: ClassiqueCollegueComponent },
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
     TableauCollegueComponent,
     CarrouselCollegueComponent,
     DetailCollegueComponent,
-    ClassiqueCollegueComponent
+    ClassiqueCollegueComponent,
+    ScorePipe
   ],
   imports: [
     BrowserModule,
