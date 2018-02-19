@@ -7,9 +7,9 @@ export class ScorePipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
     if(value < 0){
-      return `- ${value*-1}`;
+      return  `<span class="text-danger">- ${value*-1}</span>`;
     }else if(value > 0){
-      return `+ ${value}`;
+      return `<span class="text-success"> + ${value}</span>`;
     }else{
       return `${value}`;
     }
