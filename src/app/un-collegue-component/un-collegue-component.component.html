@@ -6,7 +6,7 @@
     </div>
     <div class="card-body" style="text-align:center;">
       <a routerLink="/detail/{{collegue.pseudo}}">
-        <h5 class="card-title">{{collegue.pseudo}}</h5>
+        <h5 class="card-title">{{collegue.pseudo | uppercase}}</h5>
       </a>
       <p class="card-text">
         <strong>{{collegue.score}}</strong>
