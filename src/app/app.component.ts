@@ -29,7 +29,6 @@ export class AppComponent implements OnInit{
       this.collegueService.sauvegarder(new Collegue(pseudo.value, imageUrl.value, 0)).then(
         colleg => this.collegues.push(colleg)
       )
-      return false;
   }
 
 }
