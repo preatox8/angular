@@ -1,5 +1,18 @@
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="pipe_filter_number">Limiter</span>
+    </div>
+    <input type="text" placeholder="Limiter le nombre maximum de collègues" class="form-control" value="10" aria-describedby="basic-addon3" #filtrenombre (keyup)="onChangeSize(filtrenombre)">
+</div>
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="pipe_filter_pseudo">Filtrer par pseudo</span>
+    </div>
+    <input type="search" placeholder="Filtrer par pseudo" class="form-control" ng-model="filtre" id="valeur_filtrage_pseudo"
+        aria-describedby="basic-addon3" #filtrepseudo>
+</div>
 <div class="row">
-    <div *ngFor="let perso of collegues">
+    <div *ngFor="let perso of collegues | slice:0:size">
         <app-un-collegue-component [collegue]="perso"></app-un-collegue-component>
     </div>
 </div>
