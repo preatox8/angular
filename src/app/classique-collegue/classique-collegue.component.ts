@@ -13,7 +13,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ClassiqueCollegueComponent implements OnInit {
   size:number = 10;
-  collegues:Collegue[];
+  letter:string = "";
+  collegues:Collegue[] = [];
 
   constructor(private collegueService:CollegueService) { }
 
@@ -25,6 +26,10 @@ export class ClassiqueCollegueComponent implements OnInit {
 
   onChangeSize(filtreNombre:HTMLInputElement) {
     this.size = Number.parseInt(filtreNombre.value);
+  }
+
+  onFilterPseudo(filtrePseudo:HTMLInputElement) {
+   this.letter = filtrePseudo.value;
   }
 
 }

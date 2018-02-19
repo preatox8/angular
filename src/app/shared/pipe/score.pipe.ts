@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'scoremodif'
+  name: 'scoremodif',
 })
 export class ScorePipe implements PipeTransform {
 
