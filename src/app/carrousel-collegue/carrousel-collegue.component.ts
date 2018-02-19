@@ -13,7 +13,9 @@ import { ActivatedRoute } from '@angular/router';
 export class CarrouselCollegueComponent implements OnInit {
 
   collegue: Collegue;
-  collegues: Collegue[];
+  size:number = 10;
+  letter:string = "";
+  collegues:Collegue[] = [];
 
   constructor(private collegueService: CollegueService) { }
 
@@ -33,6 +35,14 @@ export class CarrouselCollegueComponent implements OnInit {
     this.collegueService.detesterUnCollegue(this.collegue).then(tabCollegues => {
       this.collegue.score = tabCollegues.score;
     });
+  }
+
+  onChangeSize(filtreNombre:HTMLInputElement) {
+    this.size = Number.parseInt(filtreNombre.value);
+  }
+
+  onFilterPseudo(filtrePseudo:HTMLInputElement) {
+   this.letter = filtrePseudo.value;
   }
 
 }

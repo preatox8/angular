@@ -1,3 +1,15 @@
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="pipe_filter_number">Limiter</span>
+  </div>
+  <input type="text" placeholder="Limiter le nombre maximum de collègues" class="form-control" value="10" aria-describedby="basic-addon3" #filtrenombre (keyup)="onChangeSize(filtrenombre)">
+</div>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="pipe_filter_pseudo">Filtrer par pseudo</span>
+  </div>
+  <input type="text" placeholder="Filtrer par pseudo" class="form-control" value="" id="valeur_filtrage_pseudo" aria-describedby="basic-addon3" #filtrepseudo (keyup)="onFilterPseudo(filtrepseudo)">
+</div>
 <div class="table-responsive">
   <table class="table">
     <thead class="thead-light">
@@ -9,14 +21,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let collegue of collegues">
+      <tr *ngFor="let collegue of collegues | pseudo:letter | slice:0:size">
         <td>
           <img class="card-img-top img-fluid mx-auto d-block" style="width:100px" src="{{collegue.imageUrl}}" alt="image collegue">
         </td>
-        <td>{{ collegue.pseudo }}</td>
-        <td>{{ collegue.score }}</td>
+        <td>{{ collegue.pseudo | uppercase}}</td>
+        <td [innerHTML]="collegue.score | scoremodif"></td>
         <td>
-          <button (click)="jaime()" class="btn btn-outline-primary">J'aime</button> <button (click)="jedeteste()" class="btn btn-outline-danger">Je deteste</button>
+          <button (click)="jaime()" class="btn btn-outline-primary">J'aime</button>
+          <button (click)="jedeteste()" class="btn btn-outline-danger">Je deteste</button>
         </td>
       </tr>
     </tbody>

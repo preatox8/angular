@@ -1,9 +1,10 @@
 <ngb-carousel>
-  <div *ngFor="let collegue of collegues">
+  <div *ngFor="let collegue of collegues | pseudo:letter | slice:0:size">
     <ng-template ngbSlide>
       <img class="card-img-top" src="{{collegue.imageUrl}}" alt="photo collegue">
       <div class="carousel-caption">
-        <h1>{{ collegue.score }}</h1>
+        <h1>{{ collegue.pseudo }}</h1>
+        <h1 [innerHTML]="collegue.score | scoremodif"></h1>
         <button (click)="jaime()" class="btn btn-primary">J'aime</button>
         <button (click)="jedeteste()" class="btn btn-danger">Je deteste</button>
       </div>
