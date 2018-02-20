@@ -3,7 +3,7 @@
   <div class="card-body" style="text-align:center;">
     <h5 class="card-title">{{collegue.pseudo}}</h5>
     <p class="card-text">
-      <strong>{{collegue.score}}</strong>
+      <strong [innerHTML]="collegue.score | scoremodif"></strong>
     </p>
   </div>
   <div class="card-body" style="text-align: center;">

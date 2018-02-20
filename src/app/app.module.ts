@@ -15,6 +15,9 @@ import { DetailCollegueComponent } from './detail-collegue/detail-collegue.compo
 import { ClassiqueCollegueComponent } from './classique-collegue/classique-collegue.component';
 import { ScorePipe } from './shared/pipe/score.pipe';
 import { PseudoPipe } from './shared/pipe/pseudo.pipe';
+import { Observable } from 'rxjs/Observable';
+import { VotreDernierAvisComponent } from './votre-dernier-avis/votre-dernier-avis.component';
+import { EtatDuSiteComponent } from './etat-du-site/etat-du-site.component';
 
 const appRoutes: Routes = [
   { path: 'classique', component: ClassiqueCollegueComponent },
@@ -35,7 +38,9 @@ const appRoutes: Routes = [
     DetailCollegueComponent,
     ClassiqueCollegueComponent,
     ScorePipe,
-    PseudoPipe
+    PseudoPipe,
+    VotreDernierAvisComponent,
+    EtatDuSiteComponent
   ],
   imports: [
     BrowserModule,

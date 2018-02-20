@@ -19,22 +19,21 @@ export class UnCollegueComponentComponent implements OnInit {
 
 
 
-  constructor(private collegueService: CollegueService) {
-
-  }
+  constructor(private collegueService: CollegueService) { }
 
   ngOnInit() {
+    
   }
 
 
   jaime() {
-    this.collegueService.aimerUnCollegue(this.collegue).then(tabCollegues => {
+    this.collegueService.aimerUnCollegue(this.collegue).subscribe(tabCollegues => {
       this.collegue.score = tabCollegues.score;
     });
   }
 
   jedeteste() {
-    this.collegueService.detesterUnCollegue(this.collegue).then(tabCollegues => {
+    this.collegueService.detesterUnCollegue(this.collegue).subscribe(tabCollegues => {
       this.collegue.score = tabCollegues.score;
     });
   }

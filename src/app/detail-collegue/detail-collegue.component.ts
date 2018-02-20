@@ -22,17 +22,17 @@ export class DetailCollegueComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.collegueService.afficherUnCollegue(this.pseudo).then(c => this.collegue = c)
+    this.collegueService.afficherUnCollegue(this.pseudo).subscribe(c => this.collegue = c)
   }
 
   jaime() {
-    this.collegueService.aimerUnCollegue(this.collegue).then(tabCollegues => {
+    this.collegueService.aimerUnCollegue(this.collegue).subscribe(tabCollegues => {
       this.collegue.score = tabCollegues.score;
     });
   }
 
   jedeteste() {
-    this.collegueService.detesterUnCollegue(this.collegue).then(tabCollegues => {
+    this.collegueService.detesterUnCollegue(this.collegue).subscribe(tabCollegues => {
       this.collegue.score = tabCollegues.score;
     });
   }

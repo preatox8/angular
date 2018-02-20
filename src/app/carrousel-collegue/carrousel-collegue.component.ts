@@ -20,19 +20,23 @@ export class CarrouselCollegueComponent implements OnInit {
   constructor(private collegueService: CollegueService) { }
 
   ngOnInit() {
-    this.collegueService.listerCollegues().then(tabCollegues => {
+    //recuperer la lister
+    this.collegueService.listerCollegues().subscribe(tabCollegues => {
       this.collegues = tabCollegues
     });
+
+    //MAJ la liste
+    this.collegueService.getObserversubject().subscribe(collegue => { this.collegues.push(collegue) });
   }
 
   jaime() {
-    this.collegueService.aimerUnCollegue(this.collegue).then(tabCollegues => {
+    this.collegueService.aimerUnCollegue(this.collegue).subscribe(tabCollegues => {
       this.collegue.score = tabCollegues.score;
     });
   }
 
   jedeteste() {
-    this.collegueService.detesterUnCollegue(this.collegue).then(tabCollegues => {
+    this.collegueService.detesterUnCollegue(this.collegue).subscribe(tabCollegues => {
       this.collegue.score = tabCollegues.score;
     });
   }

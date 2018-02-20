@@ -1,0 +1,3 @@
+<span *ngIf="!(online | async)" style="margin-top:20px;" class="badge badge-danger float-right">Hors ligne</span>
+
+<span *ngIf="online | async" style="margin-top:20px;" class="badge badge-primary float-right">En ligne</span>
