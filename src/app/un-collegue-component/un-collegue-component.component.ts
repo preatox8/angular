@@ -1,10 +1,14 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Collegue } from '../shared/domain/collegue';
-
 import { CollegueService } from '../shared/service/collegue.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { AviscollegueComponent } from '../aviscollegue/aviscollegue.component';
+import { Aviscollegue } from '../shared/domain/aviscollegue';
+
+
 
 @Component({
   selector: 'app-un-collegue-component',
@@ -18,13 +22,17 @@ export class UnCollegueComponentComponent implements OnInit {
   @Output() colleguesort: Collegue;
 
 
-
-  constructor(private collegueService: CollegueService) { }
+  constructor(private collegueService: CollegueService, private modalService: NgbModal) { }
 
   ngOnInit() {
-    
+
   }
 
+  open() {
+    const modalRef = this.modalService.open(AviscollegueComponent);
+    const nom = this.collegue.pseudo;
+    modalRef.componentInstance.name = nom;
+  }
 
   jaime() {
     this.collegueService.aimerUnCollegue(this.collegue).subscribe(tabCollegues => {
@@ -39,9 +47,6 @@ export class UnCollegueComponentComponent implements OnInit {
   }
 
   tailler(img: HTMLImageElement) {
-    console.log("tailler", img);
     this.hauteurImage = img.width;
   }
-
-
 }

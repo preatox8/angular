@@ -3,6 +3,9 @@ import { Collegue } from '../shared/domain/collegue';
 import { CollegueService } from '../shared/service/collegue.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { AviscollegueComponent } from '../aviscollegue/aviscollegue.component';
+import { Aviscollegue } from '../shared/domain/aviscollegue';
 
 
 @Component({
@@ -17,7 +20,7 @@ export class CarrouselCollegueComponent implements OnInit {
   letter:string = "";
   collegues:Collegue[] = [];
 
-  constructor(private collegueService: CollegueService) { }
+  constructor(private collegueService: CollegueService, private modalService: NgbModal) { }
 
   ngOnInit() {
     //recuperer la lister
@@ -27,6 +30,12 @@ export class CarrouselCollegueComponent implements OnInit {
 
     //MAJ la liste
     this.collegueService.getObserversubject().subscribe(collegue => { this.collegues.push(collegue) });
+  }
+
+  open(collegue:Collegue) {
+    const modalRef = this.modalService.open(AviscollegueComponent);
+   
+    modalRef.componentInstance.name = collegue.pseudo;
   }
 
   jaime() {

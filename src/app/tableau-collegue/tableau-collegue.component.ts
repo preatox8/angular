@@ -5,6 +5,9 @@ import { EventEmitter, Key } from 'selenium-webdriver';
 import { CollegueService } from '../shared/service/collegue.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { AviscollegueComponent } from '../aviscollegue/aviscollegue.component';
+import { Aviscollegue } from '../shared/domain/aviscollegue';
 
 
 @Component({
@@ -14,12 +17,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TableauCollegueComponent implements OnInit {
 
-  size:number = 10;
-  letter:string = "";
-  collegues:Collegue[] = [];
+  size: number = 10;
+  letter: string = "";
+  collegues: Collegue[] = [];
+  pseudo: string; 
   @Input() collegue: Collegue;
 
-  constructor(private collegueService: CollegueService) { }
+  constructor(private collegueService: CollegueService, private modalService: NgbModal) {
+  }
 
   ngOnInit() {
     //recuperer la lister
@@ -29,6 +34,14 @@ export class TableauCollegueComponent implements OnInit {
 
     //MAJ la liste
     this.collegueService.getObserversubject().subscribe(collegue => { this.collegues.push(collegue) });
+
+  }
+
+  
+  open(collegue:Collegue) {
+    const modalRef = this.modalService.open(AviscollegueComponent);
+   
+    modalRef.componentInstance.name = collegue.pseudo;
   }
 
 
@@ -44,12 +57,12 @@ export class TableauCollegueComponent implements OnInit {
     });
   }
 
-  onChangeSize(filtreNombre:HTMLInputElement) {
+  onChangeSize(filtreNombre: HTMLInputElement) {
     this.size = Number.parseInt(filtreNombre.value);
   }
 
-  onFilterPseudo(filtrePseudo:HTMLInputElement) {
-   this.letter = filtrePseudo.value;
+  onFilterPseudo(filtrePseudo: HTMLInputElement) {
+    this.letter = filtrePseudo.value;
   }
 
 }

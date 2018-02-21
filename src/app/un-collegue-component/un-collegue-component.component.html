@@ -1,7 +1,8 @@
 <div class="col-4">
   <div class="card" style="width: 18rem;">
     <div class="d-flex align-items-center" [style.height.px]="hauteurImage*3/4" style="overflow: hidden;">
-      <img #image (window:resize)="tailler(image)" (load)="tailler(image)" (error)="sourcer(image)" class="card-img-top" src="{{collegue.imageUrl}}" alt="Card image cap">
+      <img #image (window:resize)="tailler(image)" (load)="tailler(image)" (error)="sourcer(image)" class="card-img-top" src="{{collegue.imageUrl}}"
+        alt="Card image cap">
     </div>
     <div class="card-body" style="text-align:center;">
       <a routerLink="/detail/{{collegue.pseudo}}">
@@ -14,6 +15,7 @@
     <div class="card-body" style="text-align: center;">
       <button (click)="jaime()" class="btn btn-outline-primary">J'aime</button>
       <button (click)="jedeteste()" class="btn btn-outline-danger">Je deteste</button>
+      <button class="btn btn-outline-success" (click)="open()">Rédiger un commentaire</button>
     </div>
   </div>
 </div>

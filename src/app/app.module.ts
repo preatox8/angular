@@ -18,6 +18,8 @@ import { PseudoPipe } from './shared/pipe/pseudo.pipe';
 import { Observable } from 'rxjs/Observable';
 import { VotreDernierAvisComponent } from './votre-dernier-avis/votre-dernier-avis.component';
 import { EtatDuSiteComponent } from './etat-du-site/etat-du-site.component';
+import { FormsModule } from '@angular/forms';
+import { AviscollegueComponent } from './aviscollegue/aviscollegue.component';
 
 const appRoutes: Routes = [
   { path: 'classique', component: ClassiqueCollegueComponent },
@@ -40,14 +42,17 @@ const appRoutes: Routes = [
     ScorePipe,
     PseudoPipe,
     VotreDernierAvisComponent,
-    EtatDuSiteComponent
+    EtatDuSiteComponent,
+    AviscollegueComponent
   ],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
+  entryComponents: [AviscollegueComponent],
   providers: [CollegueService],
   bootstrap: [AppComponent]
 })
